@@ -1,47 +1,73 @@
-var defaultSites = {
+// Cookies from this list are blocked by default
+const defaultSites = {
   'Adweek': 'adweek.com',
   'Algemeen Dagblad': 'ad.nl',
+  '\u00C1mbito': 'ambito.com',
   'American Banker': 'americanbanker.com',
   'Baltimore Sun': 'baltimoresun.com',
   'Barron\'s': 'barrons.com',
   'Bloomberg': 'bloomberg.com',
-  'Bloomberg Quint': 'bloombergquint.com',
+  'Bloomberg Quint (free articles only)': 'bloombergquint.com',
+  'BN De Stem': 'bndestem.nl',
+  'Brabants Dagblad': 'bd.nl',
+  'Brisbane Times': 'brisbanetimes.com.au',
   'Business Insider': 'businessinsider.com',
-  'Crain\'s Chicago Business': 'chicagobusiness.com',
+  'Caixin': 'caixinglobal.com',
+  'Central Western Daily': 'centralwesterndaily.com.au',
+  'Chemical & Engineering News': 'cen.acs.org',
   'Chicago Tribune': 'chicagotribune.com',
   'Corriere Della Sera': 'corriere.it',
+  'Crain\'s Chicago Business': 'chicagobusiness.com',
   'Daily Press': 'dailypress.com',
-  'Dagens Nyheter': 'dn.se',
+  'De Gelderlander': 'gelderlander.nl',
   'De Groene Amsterdammer': 'groene.nl',
-  'De Volkskrant': 'volkskrant.nl',
   'DeMorgen': 'demorgen.be',
   'Denver Post': 'denverpost.com',
+  'De Stentor': 'destentor.nl',
+  'De Tijd': 'tijd.be',
+  'de Volkskrant': 'volkskrant.nl',
+  'DELFI': 'delfi.ee',
+  'Diario Financiero': 'df.cl',
+  'Domani': 'editorialedomani.it',
   'Dynamed Plus': 'dynamed.com',
-  'Encyclopedia Britannica': 'britannica.com',
   'Eindhovens Dagblad': 'ed.nl',
+  'El Mercurio':'elmercurio.com',
   'El Pais': 'elpais.com',
-  'ET Prime': 'prime.economictimes.indiatimes.com',
+  'Elu24': 'elu24.ee',
+  'Encyclopedia Britannica': 'britannica.com',
+  'Estadão': 'estadao.com.br',
   'Examiner': 'examiner.com.au',
-  'First Things': 'firstthings.com',
   'Financial News': 'fnlondon.com',
+  'Financial Post':'financialpost.com',
   'Financial Times': 'ft.com',
+  'First Things': 'firstthings.com',
   'Foreign Policy': 'foreignpolicy.com',
   'Fortune': 'fortune.com',
+  'Genomeweb': 'genomeweb.com',
   'Glassdoor': 'glassdoor.com',
-  'Haaretz': 'haaretz.co.il',
+  'Globes': 'globes.co.il',
+  'Grubstreet' : 'grubstreet.com',
   'Haaretz English': 'haaretz.com',
+  'Haaretz': 'haaretz.co.il',
   'Handelsblatt': 'handelsblatt.com',
   'Harper\'s Magazine': 'harpers.org',
   'Hartford Courant': 'courant.com',
   'Harvard Business Review': 'hbr.org',
+  'Herald Sun': 'heraldsun.com.au',
   'Het Financieele Dagblad': 'fd.nl',
+  'History Extra': 'historyextra.com',
+  'Humo': 'humo.be',
+  'Il Manifesto': 'ilmanifesto.it',
   'Inc.com': 'inc.com',
+  'Interest NZ': 'interest.co.nz',
+  'Investors Chronicle': 'investorschronicle.co.uk',
   'La Nacion': 'lanacion.com.ar',
   'La Repubblica': 'repubblica.it',
+  'La Stampa': 'lastampa.it',
   'La Tercera': 'latercera.com',
+  'La Voix du Nord': 'lavoixdunord.fr',
   'L\'Echo': 'lecho.be',
   'Le Devoir': 'ledevoir.com',
-  'Le Monde': 'lemonde.fr',
   'Le Parisien': 'leparisien.fr',
   'Les Echos': 'lesechos.fr',
   'Loeb Classical Library': 'loebclassics.com',
@@ -49,141 +75,95 @@ var defaultSites = {
   'Los Angeles Business Journal': 'labusinessjournal.com',
   'Los Angeles Times': 'latimes.com',
   'Medium': 'medium.com',
+  'Medscape': 'medscape.com',
   'Mexico News Daily': 'mexiconewsdaily.com',
   'MIT Sloan Management Review': 'sloanreview.mit.edu',
   'MIT Technology Review': 'technologyreview.com',
+  'Mountain View Voice': 'mv-voice.com',
   'National Post': 'nationalpost.com',
+  'Neue Zürcher Zeitung': 'nzz.ch',
+  'New Statesman': 'newstatesman.com',
+  'New York Daily News': 'nydailynews.com',
   'New York Magazine': 'nymag.com',
+  'New Zealand Herald': 'nzherald.co.nz',
   'Nikkei Asian Review': 'asia.nikkei.com',
   'NRC': 'nrc.nl',
-  'New Zealand Herald': 'nzherald.co.nz',
-  'OrlandoSentinel': 'orlandosentinel.com',
+  'NT News': 'ntnews.com.au',
+  'Orange County Register': 'ocregister.com',
+  'Orlando Sentinel': 'orlandosentinel.com',
+  'Palo Alto Online': 'paloaltoonline.com',
   'Parool': 'parool.nl',
-  'Quartz': 'qz.com',
+  'Postimees': 'postimees.ee',
+  'PZC': 'pzc.nl',
+  'Quartz (free articles only)': 'qz.com',
   'Quora': 'quora.com',
+  'Quotidiani Gelocal': 'gelocal.it',
+  'Republic.ru': 'republic.ru',
   'San Diego Union Tribune': 'sandiegouniontribune.com',
   'San Francisco Chronicle': 'sfchronicle.com',
   'Scientific American': 'scientificamerican.com',
   'Seeking Alpha': 'seekingalpha.com',
+  'Slate': 'slate.com',
   'SOFREP': 'sofrep.com',
+  'Star Tribune': 'startribune.com',
   'Statista': 'statista.com',
+  'Stuff': 'stuff.co.nz',
+  "Süddeutsche Zeitung": "sueddeutsche.de",
   'SunSentinel': 'sun-sentinel.com',
-  'Tech in Asia':'techinasia.com',
+  'Tech in Asia': 'techinasia.com',
   'Telegraaf': 'telegraaf.nl',
+  'The Advertiser': 'adelaidenow.com.au',
   'The Advocate': 'theadvocate.com.au',
   'The Age': 'theage.com.au',
   'The American Interest': 'the-american-interest.com',
-  'The Athletic': 'theathletic.com',
   'The Atlantic': 'theatlantic.com',
-  'The Australian': 'theaustralian.com.au',
   'The Australian Financial Review': 'afr.com',
-  'The Boston Globe': 'bostonglobe.com',
+  'The Australian': 'theaustralian.com.au',
   'The Business Journals': 'bizjournals.com',
   'The Canberra Times': 'canberratimes.com.au',
   'The Courier': 'thecourier.com.au',
+  'The Courier Mail': 'couriermail.com.au',
+  'The Cut': 'thecut.com',
+  'The Daily Telegraph': 'dailytelegraph.com.au',
   'The Diplomat': 'thediplomat.com',
   'The Economist': 'economist.com',
   'The Globe and Mail': 'theglobeandmail.com',
+  'The Herald': 'theherald.com.au',
   'The Hindu': 'thehindu.com',
   'The Irish Times (free articles only)': 'irishtimes.com',
   'The Japan Times': 'japantimes.co.jp',
+  'The Kansas City Star': 'kansascity.com',
   'TheMarker': 'themarker.com',
   'The Mercury News': 'mercurynews.com',
+  'The Mercury Tasmania': 'themercury.com.au',
   'The Morning Call': 'mcall.com',
   'The Nation': 'thenation.com',
+  'The National': 'thenational.scot',
   'The News-Gazette': 'news-gazette.com',
-  'The New Statesman': 'newstatesman.com',
-  'The New York Times': 'nytimes.com',
   'The New Yorker': 'newyorker.com',
+  'The New York Times': 'nytimes.com',
   'The Philadelphia Inquirer': 'inquirer.com',
+  'The Saturday Paper': 'thesaturdaypaper.com.au',
   'The Seattle Times': 'seattletimes.com',
-  'The Spectator': 'spectator.co.uk',
   'The Spectator Australia': 'spectator.com.au',
+  'The Spectator (U.K.)': 'spectator.co.uk',
+  'The Spectator (U.S.)': 'spectator.us',
   'The Sydney Morning Herald': 'smh.com.au',
   'The Telegraph': 'telegraph.co.uk',
   'The Times': 'thetimes.co.uk',
   'The Toronto Star': 'thestar.com',
-  'The Washington Post': 'washingtonpost.com',
   'The Wall Street Journal': 'wsj.com',
+  'The Washington Post': 'washingtonpost.com',
+  'The Wrap': 'thewrap.com',
   'Times Literary Supplement': 'the-tls.co.uk',
   'Towards Data Science': 'towardsdatascience.com',
   'Trouw': 'trouw.nl',
-  'Winston-Salem Journal': 'journalnow.com',
+  'Tubantia': 'tubantia.nl',
   'Vanity Fair': 'vanityfair.com',
   'Vrij Nederland': 'vn.nl',
+  'Vulture': 'vulture.com',
+  'Winston-Salem Journal': 'journalnow.com',
   'Wired': 'wired.com',
+  'World Politics Review': 'worldpoliticsreview.com',
   '*General Paywall Bypass*': 'generalpaywallbypass'
 };
-
-// Saves options to chrome.storage
-function save_options() {
-  var gh_url = document.getElementById('bypass_sites').value;
-  var inputEls = document.querySelectorAll('#bypass_sites input');
-  var sites = {};
-
-  var sites = Array.from(inputEls).reduce(function(memo, inputEl) {
-    if (inputEl.checked) {
-      memo[inputEl.dataset.key] = inputEl.dataset.value;
-    }
-    return memo;
-  }, {});
-
-  chrome.storage.sync.set({
-    sites: sites
-  }, function() {
-    // Update status to let user know options were saved.
-    var status = document.getElementById('status');
-    status.textContent = 'Options saved.';
-    setTimeout(function() {
-      status.textContent = '';
-      window.close();
-    }, 800);
-  });
-}
-
-// Restores checkbox input states using the preferences
-// stored in chrome.storage.
-function renderOptions() {
-  chrome.storage.sync.get({
-    sites: {}
-  }, function(items) {
-    var sites = items.sites;
-    var sitesEl = document.getElementById('bypass_sites');
-    for (var key in defaultSites) {
-      if (!defaultSites.hasOwnProperty(key)) {
-        continue;
-      }
-
-      var value = defaultSites[key];
-      var labelEl = document.createElement('label');
-      var inputEl = document.createElement('input');
-      inputEl.type = 'checkbox';
-      inputEl.dataset.key = key;
-      inputEl.dataset.value = value;
-      inputEl.checked = (key in sites) || (key.replace(/\s\(.*\)/, '') in sites);
-
-      labelEl.appendChild(inputEl);
-      labelEl.appendChild(document.createTextNode(' '+key));
-      sitesEl.appendChild(labelEl);
-    }
-  });
-}
-
-function selectAll() {
-  var inputEls = Array.from(document.querySelectorAll('input'));
-  inputEls.forEach(function(inputEl) {
-    inputEl.checked = true;
-  });
-}
-
-function selectNone() {
-  var inputEls = Array.from(document.querySelectorAll('input'));
-  inputEls.forEach(function(inputEl) {
-    inputEl.checked = false;
-  });
-}
-
-document.addEventListener('DOMContentLoaded', renderOptions);
-document.getElementById('save').addEventListener('click', save_options);
-document.getElementById('select-all').addEventListener('click', selectAll);
-document.getElementById('select-none').addEventListener('click', selectNone);
